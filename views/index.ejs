@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>
+		
+      <!--Let browser know website is optimized for mobile-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+	<body>
+		
+		<div class="ui container">
+			<h1>Pick your category.</h1>
+
+			<h2 class="ui large header">
+				<a href="/categories/new">Create a new category.</a>
+			</h2>	
+		</div>
+		
+		<br>
+			<div class="ui stackable grid container">
+				<% categories.forEach(function (category) { %>
+					<div class="four wide column" id='<%=category.title%>'>
+						<h2>
+							<li> Pick 
+							<a href="/categories/<%=category._id%>"><%=category.title%></a>
+							</li>
+						</h2>
+					</div>	
+				<% }); %> 
+			<div/>	
+
+		<script src="/sockets.js"></script>	
+		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		<!-- <script src="/game.js"></script> -->
+	<!-- <script src="/socket.io/socket.io.js"></script> -->
+	</body>
+	
+</html>
