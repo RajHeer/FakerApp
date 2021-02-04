@@ -1,11 +1,14 @@
-// console.log("game on");
-  
-// //RANDOM ASSIGNED CARDS
+//Show players in game and click ready
 
-// //Pick and show 8 random cards
-// 	console.log(Category.aggregate([{ $sample: { size: 8 } }]));
-				
-// // Start Game - scroll through array showing different card each turn
+//Assign the new 'faker' / reset game round
 
-// // End game
+//Random five cards displayed for game and vote
+
+//Tally vote and select one card
+
+//Tally vote and select top two for faker
+
+// Final vote tally and identify if faker
+
+
 

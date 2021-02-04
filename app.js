@@ -52,30 +52,6 @@ app.get("/categories", function (req, res) {
 	})
 });
 
-// // RANDOM INDEX ROUTE
-// app.get("/categories", function (req, res) {
-// 	let sample = [];
-// 	do {
-// 	 	// Count of all categories
-// 		let count =	Category.countDocuments().exec(function (err, count) {
-// 				if(err) {
-// 					console.log(err);
-// 				} else {
-// 					// Get a random entry
-// 					let random = Math.floor(Math.random() * count) + 1;
-// 					Category.findOne().skip(random).exec(function (err, result) {
-// 					  if(err) {
-// 						  console.log(err);
-// 					  } else {
-// 						  sample.push(result);
-// 						  console.log(sample);
-// 					  }
-// 					})
-// 				}
-// 		})
-// 	} while (sample.length<3);
-// });
-
 // NEW ROUTE
 app.get("/categories/new", function (req, res) {
 	res.render("new");
