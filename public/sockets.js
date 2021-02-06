@@ -8,6 +8,7 @@ const cards 	= document.querySelectorAll(".four");
 for (let card of cards) {
 	card.addEventListener("click", function(){
 		const clicked = this.id;
+		console.log(this.id);
 		socket.emit("toggle", clicked);
 	});
 }

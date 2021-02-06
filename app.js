@@ -2,6 +2,9 @@ const express		= require("express"),
 	  app	 		= express(),
 	  bodyParser 	= require("body-parser"),
 	  mongoose 		= require("mongoose"),
+	  passport		= require("passport"),
+	  LocalStrategy = require("passport-local"),
+	  session 		= require("express-session"),
 	  methodOverride= require("method-override"),
 	  socket		= require("socket.io"),
 	  User 			= require("./models/user"),
@@ -34,7 +37,19 @@ mongoose.connect("mongodb://localhost:27017/faker_v1", {
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-app.use(methodOverride("_method"))
+app.use(methodOverride("_method"));
+app.use(session ({
+	secret: "Secret",
+	resave: false,
+	saveUninitialized: false
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
+// //PASSPORT
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser()); 
 
 // LANDING PAGE ROUTE
 app.get("/", function (req, res) {
