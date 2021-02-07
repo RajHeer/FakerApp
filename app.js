@@ -56,6 +56,32 @@ app.get("/", function (req, res) {
 	res.render("home");
 });
 
+// LOGIN
+app.post("/", passport.authenticate("local", 
+		{
+			successRedirect: "/categories",
+			failureRedirect: "/"
+		}), function (req, res) {}
+);
+
+// REGISTRATION (& RULES) ROUTE
+app.get("/register", function (req, res){
+	res.render("register")
+})
+
+app.post("/register", function (req, res){
+	const newUser = new User({username: req.body.username});
+	User.register(newUser, req.body.password, function (err, user) {
+		if(err){
+			console.log(err);
+			return res.render("register");
+		}
+		passport.authenticate("local")(req,res, function () {
+			res.redirect("/categories");
+		})
+	});
+});
+
 // INDEX ROUTE
 app.get("/categories", function (req, res) {
 	Category.find({}, function (err, allCategories) {
@@ -130,3 +156,4 @@ app.delete("/categories/:id", function (req, res) {
 	})
 });
   
+
