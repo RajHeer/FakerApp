@@ -5,6 +5,7 @@ const express		= require("express"),
 	  passport		= require("passport"),
 	  LocalStrategy = require("passport-local"),
 	  session 		= require("express-session"),
+	  uuid			= require("uuid"),
 	  methodOverride= require("method-override"),
 	  socket		= require("socket.io"),
 	  User 			= require("./models/user"),
@@ -53,6 +54,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // LANDING PAGE ROUTE
 app.get("/", function (req, res) {
+	console.log("Session ID", req.sessionID);
 	res.render("home");
 });
 
@@ -70,7 +72,7 @@ app.get("/register", function (req, res){
 })
 
 app.post("/register", function (req, res){
-	const newUser = new User({username: req.body.username});
+	const newUser = new User({username: req.body.user});
 	User.register(newUser, req.body.password, function (err, user) {
 		if(err){
 			console.log(err);
@@ -84,6 +86,7 @@ app.post("/register", function (req, res){
 
 // INDEX ROUTE
 app.get("/categories", function (req, res) {
+	console.log("Session ID2", req.sessionID);
 	Category.find({}, function (err, allCategories) {
 		if(err) {
 			console.log(err);
