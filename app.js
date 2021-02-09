@@ -6,11 +6,12 @@ const express		= require("express"),
 	  LocalStrategy = require("passport-local"),
 	  session 		= require("express-session"),
 	  flash			= require("connect-flash"),
-	  uuid			= require("uuid"),
 	  methodOverride= require("method-override"),
 	  socket		= require("socket.io"),
 	  User 			= require("./models/user"),
 	  Category		= require("./models/category");
+
+let clients = {};
 
 //SERVER INTO IO
 const server = app.listen(3000, function() {
@@ -19,7 +20,7 @@ const server = app.listen(3000, function() {
 const io = socket(server);
 
 //SOCKETS
-io.on("connection", function (socket){
+io.on("connection", socket => {
 	console.log("Connected IO", socket.id);
 	//Handle incoming
 	socket.on("toggle", function(data){
@@ -62,10 +63,18 @@ app.get("/", function (req, res) {
 // LOGIN
 app.post("/", passport.authenticate("local", 
 		{
-			successRedirect: "/categories",
+			successRedirect: "/lobby",
 			failureRedirect: "/"
 		}), function (req, res) {}
 );
+
+//Lobby
+app.get("/lobby", (req, res) => {
+	console.log("SessionID Lobby", req.sessionID);
+	clients["clientID"] = req.sessionID;
+	console.log(clients);
+	res.render("lobby")
+})
 
 // REGISTRATION (& RULES) ROUTE
 app.get("/register", function (req, res){
@@ -73,7 +82,7 @@ app.get("/register", function (req, res){
 })
 
 app.post("/register", function (req, res){
-	const newUser = new User({username: req.body.user});
+	const newUser = new User({username: req.body.username});
 	User.register(newUser, req.body.password, function (err, user) {
 		if(err){
 			console.log(err);
