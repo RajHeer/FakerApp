@@ -5,6 +5,7 @@ const express		= require("express"),
 	  passport		= require("passport"),
 	  LocalStrategy = require("passport-local"),
 	  session 		= require("express-session"),
+	  { v4: uuidv4 }= require("uuid"),
 	  flash			= require("connect-flash"),
 	  methodOverride= require("method-override"),
 	  socket		= require("socket.io"),
@@ -71,9 +72,14 @@ app.post("/", passport.authenticate("local",
 //Lobby
 app.get("/lobby", (req, res) => {
 	console.log("SessionID Lobby", req.sessionID);
-	clients["clientID"] = req.sessionID;
+	clients["clientID"] = uuidv4();
 	console.log(clients);
-	res.render("lobby")
+	res.render("lobby", {createID: req.sessionID})
+})
+
+// New Game
+app.get("/newgame/:gameID", (req,res) => {
+	res.render("game");
 })
 
 // REGISTRATION (& RULES) ROUTE
