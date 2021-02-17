@@ -79,7 +79,7 @@ app.get("/lobby", (req, res) => {
 
 // New Game
 app.get("/newgame/:gameID", (req,res) => {
-	res.render("game");
+	res.render("game", {createID: req.sessionID});
 })
 
 // REGISTRATION (& RULES) ROUTE
