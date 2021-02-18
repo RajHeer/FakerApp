@@ -50,14 +50,13 @@ app.use(session ({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// //PASSPORT
+// PASSPORT
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
 
 // LANDING PAGE ROUTE
 app.get("/", function (req, res) {
-	console.log("Session ID", req.sessionID);
 	res.render("home");
 });
 
@@ -69,17 +68,23 @@ app.post("/", passport.authenticate("local",
 		}), function (req, res) {}
 );
 
-//Lobby
+//LOBBY
 app.get("/lobby", (req, res) => {
 	console.log("SessionID Lobby", req.sessionID);
 	clients["clientID"] = uuidv4();
 	console.log(clients);
-	res.render("lobby", {createID: req.sessionID})
+	res.render("lobby")
 })
 
-// New Game
-app.get("/newgame/:gameID", (req,res) => {
-	res.render("game", {createID: req.sessionID});
+// CREATE GAME
+app.post("/lobby", (req,res) => {
+	res.redirect("/newgame/"+req.body.gameLink);
+})
+
+// JOIN GAME
+app.get("/newgame/:gameLink", (req,res) =>{
+	console.log("SessionID Game", req.sessionID);
+	res.render("game")
 })
 
 // REGISTRATION (& RULES) ROUTE
@@ -102,7 +107,6 @@ app.post("/register", function (req, res){
 
 // INDEX ROUTE
 app.get("/categories", function (req, res) {
-	console.log("Session ID2", req.sessionID);
 	Category.find({}, function (err, allCategories) {
 		if(err) {
 			console.log(err);

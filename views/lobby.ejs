@@ -6,13 +6,12 @@
 		<h1>Lobby area</h1>
 		<a href="/">Main page</a>
 		
-		<form action="/newgame/createID" method="GET">
-			<button id="newGame">New Game</button>
+		<form action="/lobby" method="POST">
+			<input type="text" id="newGame" name="gameLink">
+			<button>New Game</button>
 		</form>
 		
-		<a href="/newgame/<%=createID%>">Start New Game</a>
 		
-		<input id="joinGame" placeholder="Enter Game ID">
 	
 	</body>
 </html>
