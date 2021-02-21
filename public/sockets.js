@@ -14,6 +14,10 @@ for (let card of cards) {
 }
 
 //LISTEN MESSAGES
+socket.on("connect", () => {
+  console.log(socket.id);
+});
+
 socket.on("toggle", function(data){
 	const div = document.querySelector(`#${data.id}`)
 	div.classList.toggle('grey');
