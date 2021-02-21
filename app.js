@@ -24,7 +24,8 @@ const io = socket(server);
 io.on("connection", socket => {
 	console.log("Connected IO", socket.id);
 	//Handle incoming
-	socket.on("toggle", function(data){
+	socket.on("message", function(data){
+		console.log(data);
 		io.sockets.emit("toggle", data);
 	});
 });
