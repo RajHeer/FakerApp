@@ -108,10 +108,19 @@ app.post("/register", function (req, res){
 
 // INDEX ROUTE
 app.get("/categories", function (req, res) {
+	const count = Category.countDocuments({}, function(err, result){
+        if(err){
+            res.send(err)
+        }
+        else{
+            console.log(result)
+        }
+	});
 	Category.find({}, function (err, allCategories) {
 		if(err) {
 			console.log(err);
 		} else {
+			console.log(allCategories[2]);
 			res.render("index", {categories: allCategories});
 		}
 	})
@@ -180,4 +189,3 @@ app.delete("/categories/:id", function (req, res) {
 	})
 });
   
-
