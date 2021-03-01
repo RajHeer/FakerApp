@@ -85,7 +85,35 @@ app.post("/lobby", (req,res) => {
 // JOIN GAME
 app.get("/newgame/:gameLink", (req,res) =>{
 	console.log("SessionID Game", req.sessionID);
-	res.render("game")
+	let count = '';
+	Category.countDocuments({}, function(err, result){
+        if(err){
+            console.log(err);
+        }
+        else{
+            count = result;
+        }
+	})
+	Category.find({}, function (err, allCategories) {
+		if(err) {
+			console.log(err);
+		} else {
+			const selectedElements = () => {
+				let nums = [];
+				for(let i =0; i<3; i++){
+					const randNum = Math.floor(Math.random()*count);
+					nums.push(randNum);
+				}
+				let mappedElements=[];
+				nums.forEach(num => {
+					mappedElements.push(allCategories[num]);
+				})
+				return mappedElements
+			}
+			let threeElements = selectedElements();
+			res.render("game", {categories: threeElements});
+		}
+	})
 })
 
 // REGISTRATION (& RULES) ROUTE
@@ -108,19 +136,10 @@ app.post("/register", function (req, res){
 
 // INDEX ROUTE
 app.get("/categories", function (req, res) {
-	const count = Category.countDocuments({}, function(err, result){
-        if(err){
-            res.send(err)
-        }
-        else{
-            console.log(result)
-        }
-	});
 	Category.find({}, function (err, allCategories) {
 		if(err) {
 			console.log(err);
 		} else {
-			console.log(allCategories[2]);
 			res.render("index", {categories: allCategories});
 		}
 	})

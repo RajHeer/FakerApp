@@ -1,12 +1,30 @@
 <hmtl>
 	<head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>	
 	</head>
 	<body>
 		<h1>Game Page!</h1>
-		
-		<h2>Send this join ID to your friends </h2>
+		<h3>Send this join ID to your friends </h3>
+		<div class="ui container">
+			<h1>Choose category for the round</h1>
+		</div>
+			<div class="ui stackable grid container">
+				<% categories.forEach(function (category) { %>
+					<div class="four wide column" id='<%=category.title%>'>
+						<h2>
+							<ul> 
+							<h2><%=category.title%></h2>
+							</ul>
+							<button>
+								PICK
+							</button>
+						</h2>
+					</div>	
+				<% }); %> 
+			<div/>	
 	</body>
 	<script src="/sockets.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 	
 </hmtl>

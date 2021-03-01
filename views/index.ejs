@@ -10,7 +10,7 @@
 	<body>
 		
 		<div class="ui container">
-			<h1>Pick your category.</h1>
+			<h1>Browse categories.</h1>
 
 			<h2 class="ui large header">
 				<a href="/categories/new">Create a new category.</a>
@@ -20,7 +20,7 @@
 		<br>
 			<div class="ui stackable grid container">
 				<% categories.forEach(function (category) { %>
-					<div class="four wide column" id='<%=category.title%>'>
+					<div class="four wide column">
 						<h2>
 							<li> Pick 
 							<a href="/categories/<%=category._id%>"><%=category.title%></a>
