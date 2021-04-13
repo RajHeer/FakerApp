@@ -5,14 +5,16 @@ const express		= require("express"),
 	  passport		= require("passport"),
 	  LocalStrategy = require("passport-local"),
 	  session 		= require("express-session"),
-	  { v4: uuidv4 }= require("uuid"),
 	  flash			= require("connect-flash"),
 	  methodOverride= require("method-override"),
 	  socket		= require("socket.io"),
 	  User 			= require("./models/user"),
 	  Category		= require("./models/category");
 
-let clients = {};
+//ROUTES
+const indexRoutes 	 = require("./routes/index"),
+	  categoryRoutes = require("./routes/categories"),
+	  gameRoutes     = require("./routes/game.js");
 
 //SERVER INTO IO
 const server = app.listen(3000, function() {
@@ -51,160 +53,11 @@ app.use(session ({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(indexRoutes);
+app.use(categoryRoutes);
+app.use(gameRoutes);
+
 // PASSPORT
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
-
-// LANDING PAGE ROUTE
-app.get("/", function (req, res) {
-	res.render("home");
-});
-
-// LOGIN
-app.post("/", passport.authenticate("local", 
-		{
-			successRedirect: "/lobby",
-			failureRedirect: "/"
-		}), function (req, res) {}
-);
-
-//LOBBY
-app.get("/lobby", (req, res) => {
-	console.log("SessionID Lobby", req.sessionID);
-	clients["clientID"] = uuidv4();
-	console.log(clients);
-	res.render("lobby")
-})
-
-// CREATE GAME
-app.post("/lobby", (req,res) => {
-	res.redirect("/newgame/"+req.body.gameLink);
-})
-
-// JOIN GAME
-app.get("/newgame/:gameLink", (req,res) =>{
-	console.log("SessionID Game", req.sessionID);
-	let count = '';
-	Category.countDocuments({}, function(err, result){
-        if(err){
-            console.log(err);
-        }
-        else{
-            count = result;
-        }
-	})
-	Category.find({}, function (err, allCategories) {
-		if(err) {
-			console.log(err);
-		} else {
-			const selectedElements = () => {
-				let nums = [];
-				for(let i =0; i<3; i++){
-					const randNum = Math.floor(Math.random()*count);
-					nums.push(randNum);
-				}
-				let mappedElements=[];
-				nums.forEach(num => {
-					mappedElements.push(allCategories[num]);
-				})
-				return mappedElements
-			}
-			let threeElements = selectedElements();
-			res.render("game", {categories: threeElements});
-		}
-	})
-})
-
-// REGISTRATION (& RULES) ROUTE
-app.get("/register", function (req, res){
-	res.render("register")
-})
-
-app.post("/register", function (req, res){
-	const newUser = new User({username: req.body.username});
-	User.register(newUser, req.body.password, function (err, user) {
-		if(err){
-			console.log(err);
-			return res.render("register");
-		}
-		passport.authenticate("local")(req,res, function () {
-			res.redirect("/categories");
-		})
-	});
-});
-
-// INDEX ROUTE
-app.get("/categories", function (req, res) {
-	Category.find({}, function (err, allCategories) {
-		if(err) {
-			console.log(err);
-		} else {
-			res.render("index", {categories: allCategories});
-		}
-	})
-});
-
-// NEW ROUTE
-app.get("/categories/new", function (req, res) {
-	res.render("new");
-});
-
-// SHOW ROUTE
-app.get("/categories/:id", function (req, res) {
-	Category.findById(req.params.id, function (err, foundCategory) {
-		if(err) {
-			console.log(err);
-		} else {
-			res.render("show", {category: foundCategory});
-		}
-	})
-});
-
-// CREATE ROUTE
-app.post("/categories", function (req, res) {
-	Category.create(req.body.category, function (err, newCategory) {
-		if(err) {
-			console.log(err);
-		} else {
-			res.redirect("/categories");
-		}
-	})
-});
-
-// EDIT ROUTE
-app.get("/categories/:id/edit", function (req, res) {
-	Category.findById(req.params.id, function (err, foundCategory){
-		if(err) {
-			console.log(err);
-		} else {
-			res.render("edit", {category: foundCategory});
-		}
-	})
-});
-
-// UPDATE ROUTE
-app.put("/categories/:id", function (req, res) {
-	Category.findByIdAndUpdate(req.params.id, req.body.category,
-			function (err, updatedCategory) {
-				if(err) {
-					// eventually res.redirect("back or show?")
-					console.log(err);
-				} else {
-					res.redirect("/categories/"+req.params.id);
-				}
-			}
-	)
-});
-
-// DESTROY ROUTE
-app.delete("/categories/:id", function (req, res) {
-	Category.findByIdAndRemove(req.params.id, function (err) {
-		if(err) {
-			res.redirect("/categories");
-		} else {
-			res.redirect("/categories");
-		}
-	})
-});
-  

@@ -1,21 +1,32 @@
+<link rel="stylesheet" href="/stylesheets/cards.css">
 
-<h1>
-	Create new 'category' and list items
-</h1>
+<body>
+	<main>
+	<h1>CREATE new card and list items.</h1>
 
-<a href="/categories">Back.</a>
-
-<form action="/categories" method="POST">
-	<input type="text" name="category[title]" placeholder="Title">
-	<input type="text" name="category[item1]" placeholder="Item 1">
-	<input type="text" name="category[item2]" placeholder="Item 2">
-	<input type="text" name="category[item3]" placeholder="Item 3">
-	<input type="text" name="category[item4]" placeholder="Item 4">
-	<input type="text" name="category[item5]" placeholder="Item 5">
-	<input type="text" name="category[item6]" placeholder="Item 6">
-	<input type="text" name="category[item7]" placeholder="Item 7">
-	<input type="text" name="category[item8]" placeholder="Item 8">
-	<input type="text" name="category[item9]" placeholder="Item 9">
-	<input type="text" name="category[item10]" placeholder="Item 10">
-	<button>Submit</button>
-</form>
+	<h2>
+		<a href="/categories">BACK.</a>
+	</h2>
+	<div class="show-card">
+		<article class="card">
+		<form action="/categories" method="POST">
+			<input type="text" name="category[title]" placeholder="ENTER Title...">
+			<input type="text" name="category[item1]" placeholder="...Item 1">
+			<input type="text" name="category[item2]" placeholder="...Item 2">
+			<input type="text" name="category[item3]" placeholder="...Item 3">
+			<input type="text" name="category[item4]" placeholder="...Item 4">
+			<input type="text" name="category[item5]" placeholder="...Item 5">
+			<input type="text" name="category[item6]" placeholder="...Item 6">
+			<input type="text" name="category[item7]" placeholder="...Item 7">
+			<input type="text" name="category[item8]" placeholder="...Item 8">
+			<input type="text" name="category[item9]" placeholder="...Item 9">
+			<input type="text" name="category[item10]" placeholder="...Item 10">
+			<button>SUBMIT</button>
+		</form>
+		</article>
+	</div>
+		
+	</main>
+	
+	
+</body>

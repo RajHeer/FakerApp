@@ -1,24 +1,35 @@
-<h1>
-	<%=category.title%>
-</h1>
-<h4>
-	<a href="/categories">Back.</a>
-</h4>
+<link rel="stylesheet" href="/stylesheets/cards.css">
 
-<ol>
-	<li><%=category.item1%></li>
-	<li><%=category.item2%></li>
-	<li><%=category.item3%></li>
-	<li><%=category.item4%></li>
-	<li><%=category.item5%></li>
-	<li><%=category.item6%></li>
-	<li><%=category.item7%></li>
-	<li><%=category.item8%></li>
-	<li><%=category.item9%></li>
-	<li><%=category.item10%></li>
-</ol>
+<body>
 
-<a href="/categories/<%=category._id%>/edit">Edit me.</a>
-<form action="/categories/<%=category._id%>?_method=DELETE" method=POST>
-	<button>Delete!</button>
-</form>
+	<main>
+		<h1><%=category.title%></h1>
+
+		<h2><a href="/categories">BACK.</a></h2>
+			<div class="show-card">
+				<article class="card">
+					<header class="card-header">
+						<ol>
+							<li><%=category.item1%></li>
+							<li><%=category.item2%></li>
+							<li><%=category.item3%></li>
+							<li><%=category.item4%></li>
+							<li><%=category.item5%></li>
+							<li><%=category.item6%></li>
+							<li><%=category.item7%></li>
+							<li><%=category.item8%></li>
+							<li><%=category.item9%></li>
+							<li><%=category.item10%></li>
+						</ol>
+					</header>
+				</article>
+			</div>
+
+		<h2><a href="/categories/<%=category._id%>/edit">EDIT card.</a></h2>
+
+		<form action="/categories/<%=category._id%>?_method=DELETE" method=POST>
+			<button>DELETE!!!</button>
+		</form>	
+	</main>
+	
+</body>
