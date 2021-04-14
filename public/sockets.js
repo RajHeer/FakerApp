@@ -1,7 +1,7 @@
 const socket = io.connect("https://r-bobby.run-eu-central1.goorm.io/");
 
 //HTML elements
-const cards 	= document.querySelectorAll(".four");
+const cards 	= document.querySelectorAll(".card");
 
 
 //EMIT MESSAGE

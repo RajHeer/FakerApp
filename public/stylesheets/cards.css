@@ -19,6 +19,7 @@ a {
 }
 
 button {
+	display: flex;
 	background: #ab1616; 
 	color: #fff; 
 	border: 0; 
@@ -27,8 +28,8 @@ button {
 	cursor: pointer;
 	margin: 0 auto;
 	font-family:inherit;
-	width: 10rem;
-	/* margin: 0 auto; */
+	/* width: 6rem; */
+	text-align: center;
 } 
 
 input {

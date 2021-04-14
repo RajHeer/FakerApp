@@ -13,7 +13,7 @@
 		<h2><a href="/">BACK.</a></h2>
 		<section class="card-list">
 			<% categories.forEach(function (category) { %>
-				<article class="card">
+				<article class="card" id='<%=category.title%>'>
 					<header class="card-header">
 						<h2>PICK<a href="/categories/<%=category._id%>"><%=category.title%></a></h2>
 					</header>
