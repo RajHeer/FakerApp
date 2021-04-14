@@ -1,5 +1,5 @@
 //Show players in game and click ready
-
+console.log("Connected");
 //Assign the new 'faker' / reset game round
 
 //Random five cards displayed for game and vote
