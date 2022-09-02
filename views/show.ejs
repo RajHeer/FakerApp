@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="/stylesheets/cards.css">
+<%- include("header") %> 
 
 <body>
 
 	<main>
+	
 		<h1><%=category.title%></h1>
 
 		<h2><a href="/categories">BACK.</a></h2>
@@ -30,6 +31,9 @@
 		<form action="/categories/<%=category._id%>?_method=DELETE" method=POST>
 			<button>DELETE!!!</button>
 		</form>	
+		
 	</main>
 	
 </body>
+
+<%- include("footer") %> 
