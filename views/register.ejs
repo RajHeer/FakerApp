@@ -1,13 +1,19 @@
-<html>
-	<body>
-		<h3>
-			Register below.
-		</h3>
-		
-		<form action="/register" method="POST">
-			<input type="text" name="username" placeholder="username">
-			<input type="password" name="password" placeholder="password">
-			<input type="submit" value="Register">
-		</form>
-	</body>
-</html>
+<%- include("header") %> 
+
+<body>
+
+  <main>
+	<h3>
+		Register below.
+	</h3>
+
+	<form action="/register" method="POST">
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<input type="submit" value="Register">
+	</form>
+  </main>
+
+</body>
+
+<%- include("footer") %> 
