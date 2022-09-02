@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="/stylesheets/cards.css">
+<%- include("header") %> 
 
 <body>
-	<main>
+
+  <main>
 	<h1>CREATE new card and list items.</h1>
 
 	<h2>
 		<a href="/categories">BACK.</a>
 	</h2>
+	
 	<div class="show-card">
 		<article class="card">
 		<form action="/categories" method="POST">
@@ -26,7 +28,8 @@
 		</article>
 	</div>
 		
-	</main>
-	
+  </main>
 	
 </body>
+
+<%- include("footer") %> 
