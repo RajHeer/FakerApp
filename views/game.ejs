@@ -1,30 +1,30 @@
-<hmtl>
-	<head>
-		<link rel="stylesheet" href="/stylesheets/cards.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>	
-	</head>
+<%- include("partials/header") %> 
 	
-	<body>
-		<h1>Game Page!</h1>
-		<h3>Send this join ID to your friends </h3>
-		<h1>CHOOSE card for the round</h1>
-		
-		<section class="card-list">
-			<% categories.forEach(function (category) { %>
-				<article class="card" id='<%=category.title%>'>
-					<header class="card-header">
-						<h2><%=category.title%></h2>
-					</header>
-					<div class="card-author">
-          				<img class="author-avatar" src="https://cdn.pixabay.com/photo/2020/06/06/20/50/online-troll-5268149_1280.jpg" />
-					</div>
-				</article>
-			<% }); %> 
-		</section>
-		
-	<script src="/sockets.js"></script>
-	<script src="/game.js"></script>
+<body>
 
-	</body>
+  <main>
+  
+	<h1>Game room.</h1>
+	<h2><a href="/">MAIN PAGE.</a></h2>
+	<h3>Send this join ID to your friends [...] </h3>
+	<h1>CHOOSE card for the round</h1>
+	<p>This page is in development.</p>
+
+	<section class="card-list">
+		<% categories.forEach(function (category) { %>
+			<article class="card" id='<%=category.title%>'>
+				<header class="card-header">
+					<h2><%=category.title%></h2>
+				</header>
+				<div class="card-author">
+				<img class="author-avatar" src="https://cdn.pixabay.com/photo/2020/06/06/20/50/online-troll-5268149_1280.jpg" />
+				</div>
+			</article>
+		<% }); %> 
+	</section>
 	
-</hmtl>
+  </main>
+
+</body>
+	
+<%- include("partials/footer") %> 
