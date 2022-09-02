@@ -1,35 +1,28 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="/stylesheets/cards.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>
-		
-      <!--Let browser know website is optimized for mobile-->
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<%- include("header") %> 
 
-	<body>
-	 <main>
-		<h1>BROWSE cards.</h1>
-		<h2><a href="/">BACK.</a></h2>
-		<section class="card-list">
-			<% categories.forEach(function (category) { %>
-				<article class="card" id='<%=category.title%>'>
-					<header class="card-header">
-						<h2>PICK<a href="/categories/<%=category._id%>"><%=category.title%></a></h2>
-					</header>
-					<div class="card-author">
-          				<img class="author-avatar" src="https://cdn.pixabay.com/photo/2020/06/06/20/50/online-troll-5268149_1280.jpg" />
-					</div>
-				</article>
-			<% }); %> 
-		</section>
-		
-		<h2><a href="/categories/new">CREATE card.</a></h2>
-	  </main>
-		
-	<script src="/sockets.js"></script>	
-	<!-- <script src="/game.js"></script> -->
-	<!-- <script src="/socket.io/socket.io.js"></script> -->
-	</body>
+<body>
+
+ <main>
+ 
+	<h1>BROWSE cards.</h1>
+	<h2><a href="/">BACK.</a></h2>
+	<section class="card-list">
+		<% categories.forEach(function (category) { %>
+			<article class="card" id='<%=category.title%>'>
+				<header class="card-header">
+					<h2>PICK<a href="/categories/<%=category._id%>"><%=category.title%></a></h2>
+				</header>
+				<div class="card-author">
+				<img class="author-avatar" src="https://cdn.pixabay.com/photo/2020/06/06/20/50/online-troll-5268149_1280.jpg" />
+				</div>
+			</article>
+		<% }); %> 
+	</section>
+
+	<h2><a href="/categories/new">CREATE card.</a></h2>
 	
-</html>
+  </main>
+
+</body>
+	
+<%- include("footer") %> 
