@@ -1,31 +1,33 @@
-<html>
-	
-	<link rel="stylesheet" href="/stylesheets/cards.css">
+<%- include("header") %> 
 
-	<body>
+<body>
 
-		<h1>FAKER</h1>
-		<h2>
-			<a href="/categories">BROWSE cards.</a>
-		</h2>
-		
-		<h2>LOGIN below.</h2>
-		
-		<form action="/" method="POST">
-			<input type="text" name="username" placeholder="username">
-			<input type="password" name="password" placeholder="password">
-			<button>LOGIN</button>
-		</form>
-		
-		<h3><a href="/register">Register to play and set up your game.</a></h3> 
-		  
-		  <h2>RULES ...to find the FAKER</h2> 
-		  <p>You all pick a card.</p>
-		  <p>You all agree an item by number. Don't name it.</p>
-		  <p>You all perform a short charade.</p>
-		  <p>The catch? ...The FAKER is bluffing and only has a blank card.</p>
-		  <p>Vote on who you think the FAKER is.</p>
-			
-	</body>
+  <main>
+
+	<h1>FAKER</h1>
+	<h2>
+		<a href="/categories">BROWSE cards.</a>
+	</h2>
+
+	<h2>LOGIN below.</h2>
+
+	<form action="/" method="POST">
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<button>LOGIN</button>
+	</form>
+
+	<h3><a href="/register">Register to play and set up your game.</a></h3> 
+
+	  <h2>RULES ...to find the FAKER</h2> 
+	  <p>You all pick a card.</p>
+	  <p>You all agree an item by number. Don't name it.</p>
+	  <p>You all perform a short charade.</p>
+	  <p>The catch? ...The FAKER is bluffing and only has a blank card.</p>
+	  <p>Vote on who you think the FAKER is.</p>
+	  
+  </main>
+
+</body>
 	
-</html>
+<%- include("footer") %> 
