@@ -1,20 +1,32 @@
-<h1>
-	Edit <%=category.title%>
-</h1>
+<%- include("partials/header") %> 
 
-<a href="/categories/<%=category._id%>">Back.</a>
+<body>
 
-<form action="/categories/<%=category._id%>?_method=PUT" method="POST">
-	<input type="text" name="category[title]" value="<%=category.title%>">
-	<input type="text" name="category[item1]" value="<%=category.item1%>">
-	<input type="text" name="category[item2]" value="<%=category.item2%>">
-	<input type="text" name="category[item3]" value="<%=category.item3%>">
-	<input type="text" name="category[item4]" value="<%=category.item4%>">
-	<input type="text" name="category[item5]" value="<%=category.item5%>">
-	<input type="text" name="category[item6]" value="<%=category.item6%>">
-	<input type="text" name="category[item7]" value="<%=category.item7%>">
-	<input type="text" name="category[item8]" value="<%=category.item8%>">
-	<input type="text" name="category[item9]" value="<%=category.item9%>">
-	<input type="text" name="category[item10]" value="<%=category.item10%>">
-	<button>Submit</button>
-</form>
+  <main>
+  
+	<h1>
+		Edit <%=category.title%>
+	</h1>
+
+	<a href="/categories/<%=category._id%>">Back.</a>
+
+	<form action="/categories/<%=category._id%>?_method=PUT" method="POST">
+		<input type="text" name="category[title]" value="<%=category.title%>">
+		<input type="text" name="category[item1]" value="<%=category.item1%>">
+		<input type="text" name="category[item2]" value="<%=category.item2%>">
+		<input type="text" name="category[item3]" value="<%=category.item3%>">
+		<input type="text" name="category[item4]" value="<%=category.item4%>">
+		<input type="text" name="category[item5]" value="<%=category.item5%>">
+		<input type="text" name="category[item6]" value="<%=category.item6%>">
+		<input type="text" name="category[item7]" value="<%=category.item7%>">
+		<input type="text" name="category[item8]" value="<%=category.item8%>">
+		<input type="text" name="category[item9]" value="<%=category.item9%>">
+		<input type="text" name="category[item10]" value="<%=category.item10%>">
+		<button>Submit</button>
+	</form>
+	
+  </main>
+
+</body>
+
+<%- include("partials/footer") %> 
