@@ -11,8 +11,7 @@ Work in progress for what will be a multiplayer card-game using charades and blu
 5. Basic CSS styling and animinations drawing on CSS tricks tutorials.
 
 ### Features to develop
-1. EJS 'partials' or headers to add for each template to specify meta data, links to sheets/CDNs, page title, mobile configuration.
-2. Logout feature
-3. Lobby and game room for multiplayer experience. Invite others to join session and use websockets for in-game communication.
-4. Full website responsiveness with adding media enquires to CSS.
-5. Data association to control who can create and edit game cards.
+1. Logout feature
+2. Lobby and game room for multiplayer experience. Invite others to join session and use websockets for in-game communication.
+3. Full website responsiveness with adding media enquires to CSS.
+4. Data association to control who can create and edit game cards.
