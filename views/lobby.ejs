@@ -1,17 +1,21 @@
-<html>
-	<head>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js" integrity="sha512-gVG6WRMUYFaIdoocaxbqd02p3DUbhReTBWc7NTGB96i7vONrr7GuCZJHFFmkXEhpwilIWUnfRIMSlKaApwd/jg==" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<h1>Lobby area</h1>
-		<a href="/">Main page</a>
-		
-		<form action="/lobby" method="POST">
-			<input type="text" id="newGame" name="gameLink">
-			<button>New Game</button>
-		</form>
-		
-		
-	<script src="/sockets.js"></script>	
-	</body>
-</html>
+<%- include("header") %> 
+
+<body>
+
+  <main>
+  
+	<h1>Lobby area</h1>
+	<a href="/">Main page</a>
+
+	<form action="/lobby" method="POST">
+		<input type="text" id="newGame" name="gameLink">
+		<button>New Game</button>
+	</form>
+	
+	<p>This area is in development. Intended that players to assemble and join game from here. Option to name the game 'room' and send details to late joiners.</p>
+  
+  </main>	
+
+</body>
+	
+<%- include("footer") %> 
