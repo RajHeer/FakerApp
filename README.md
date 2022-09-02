@@ -4,10 +4,10 @@
 Work in progress for what will be a multiplayer card-game using charades and bluffing.
 
 ### Features implemented
-1.Mongo/Express/Node stack with a full create-read-update-destroy (CRUD) capabilities using RESTful architecture and endpoints.
+1. Mongo/Express/Node stack with a full create-read-update-destroy (CRUD) capabilities using RESTful architecture and endpoints.
 2. Mongo with Mongoose for data persistence and creating, editing and deleting records. Users can create their own custom game cards.
 3. EJS for dynamic HTML templates.
-4. Authentication and login using Passport/Passport-Local
+4. Authentication and login using Passport/Passport-Local etc.
 5. Basic CSS styling and animinations drawing on CSS tricks tutorials.
 
 ### Features to develop
