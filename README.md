@@ -1,9 +1,9 @@
 # fakerApp
 
-##Overview
+## Overview
 Work in progress for what will be a multiplayer card-game using charades and bluffing.
 
-###Features implemented
+### Features implemented
 1.Mongo/Express/Node stack with a full create-read-update-destroy (CRUD) capabilities using RESTful architecture and endpoints.
 2. Mongo with Mongoose for data persistence and creating, editing and deleting records (game 'cards).
 3. EJS for dynamic HTML templates.
